@@ -1,10 +1,7 @@
 package com.codecool.reactomonspringboot.controller;
 
 import com.codecool.reactomonspringboot.controller.service.RemoteURLReader;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -20,6 +17,7 @@ public class PokemonController {
 		this.urlReader = urlReader;
 	}
 
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/pokemon")
 	public String fetchPokemons(@RequestParam(defaultValue = "0") int offset, @RequestParam(defaultValue = DEFAULT_NUMBER_OF_ITEMS_PER_PAGE) int limit) {
 		String queryParametersForAPICall = "?offset=" + offset + "&limit=" + limit;
@@ -30,6 +28,7 @@ public class PokemonController {
 		}
 	}
 
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/pokemon/{id}")
 	public String fetchPokemonById(@PathVariable int id, HttpServletResponse response) {
 		try {
@@ -40,6 +39,7 @@ public class PokemonController {
 		}
 	}
 
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/type")
 	public String fetchTypes() {
 		try {
