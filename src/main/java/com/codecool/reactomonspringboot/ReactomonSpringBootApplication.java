@@ -20,6 +20,7 @@ public class ReactomonSpringBootApplication {
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/pokemon").allowedOrigins("http://localhost:3000");
 				registry.addMapping("/pokemon/{id}").allowedOrigins("http://localhost:3000");
+				registry.addMapping("/pokemon/image/{id}").allowedOrigins("http://localhost:3000");
 				registry.addMapping("/type").allowedOrigins("http://localhost:3000");
 			}
 		};
