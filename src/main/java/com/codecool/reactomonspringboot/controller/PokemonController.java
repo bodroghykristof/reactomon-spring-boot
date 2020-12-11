@@ -19,10 +19,19 @@ public class PokemonController {
 	}
 
 	@GetMapping("/pokemon")
-	public String fetchPokemon(@RequestParam(defaultValue = "0") int offset, @RequestParam(defaultValue = DEFAULT_NUMBER_OF_ITEMS_PER_PAGE) int limit) {
+	public String fetchPokemons(@RequestParam(defaultValue = "0") int offset, @RequestParam(defaultValue = DEFAULT_NUMBER_OF_ITEMS_PER_PAGE) int limit) {
 		String queryParametersForAPICall = "?offset=" + offset + "&limit=" + limit;
 		try {
 			return urlReader.readFromUrl(POKEMON_API_ROOT + "pokemon" + queryParametersForAPICall);
+		} catch (IOException e) {
+			return "Could not fetch data";
+		}
+	}
+
+	@GetMapping("/type")
+	public String fetchTypes() {
+		try {
+			return urlReader.readFromUrl(POKEMON_API_ROOT + "type");
 		} catch (IOException e) {
 			return "Could not fetch data";
 		}
