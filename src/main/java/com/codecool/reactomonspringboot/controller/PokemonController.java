@@ -2,9 +2,11 @@ package com.codecool.reactomonspringboot.controller;
 
 import com.codecool.reactomonspringboot.controller.service.RemoteURLReader;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @RestController
@@ -24,6 +26,16 @@ public class PokemonController {
 		try {
 			return urlReader.readFromUrl(POKEMON_API_ROOT + "pokemon" + queryParametersForAPICall);
 		} catch (IOException e) {
+			return "Could not fetch data";
+		}
+	}
+
+	@GetMapping("/pokemon/{id}")
+	public String fetchPokemonById(@PathVariable int id, HttpServletResponse response) {
+		try {
+			return urlReader.readFromUrl(POKEMON_API_ROOT + "pokemon/" + id);
+		} catch (IOException e) {
+			response.setStatus(404);
 			return "Could not fetch data";
 		}
 	}
