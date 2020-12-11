@@ -17,7 +17,6 @@ public class PokemonController {
 		this.urlReader = urlReader;
 	}
 
-	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/pokemon")
 	public String fetchPokemons(@RequestParam(defaultValue = "0") int offset, @RequestParam(defaultValue = DEFAULT_NUMBER_OF_ITEMS_PER_PAGE) int limit) {
 		String queryParametersForAPICall = "?offset=" + offset + "&limit=" + limit;
@@ -28,7 +27,6 @@ public class PokemonController {
 		}
 	}
 
-	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/pokemon/{id}")
 	public String fetchPokemonById(@PathVariable int id, HttpServletResponse response) {
 		try {
@@ -39,7 +37,6 @@ public class PokemonController {
 		}
 	}
 
-	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/type")
 	public String fetchTypes() {
 		try {
