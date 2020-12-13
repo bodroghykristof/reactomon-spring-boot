@@ -1,6 +1,7 @@
 package com.codecool.reactomonspringboot.controller;
 
 import com.codecool.reactomonspringboot.controller.service.RemoteURLReader;
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -34,7 +35,12 @@ public class PokemonController {
 	@GetMapping("/pokemon/{id}")
 	public String fetchPokemonById(@PathVariable int id, HttpServletResponse response) {
 		try {
-			return urlReader.readFromUrl(POKEMON_API_ROOT + "pokemon/" + id);
+			String pokemonBaseData = urlReader.readFromUrl(POKEMON_API_ROOT + "pokemon/" + id);
+
+			JSONObject pokemonBaseDataJSONObject = new JSONObject(pokemonBaseData);
+			pokemonBaseDataJSONObject.put("image", POKEMON_IMAGE_ROOT + id + ".png");
+
+			return pokemonBaseDataJSONObject.toString();
 		} catch (IOException e) {
 			response.setStatus(404);
 			return "Could not fetch data";
