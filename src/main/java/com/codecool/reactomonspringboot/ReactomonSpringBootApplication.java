@@ -9,6 +9,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootApplication
 public class ReactomonSpringBootApplication {
 
+	private static final String REACT_APP_URL = "https://happy-brown-6dec35.netlify.app";
+
 	public static void main(String[] args) {
 		SpringApplication.run(ReactomonSpringBootApplication.class, args);
 	}
@@ -18,10 +20,10 @@ public class ReactomonSpringBootApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/pokemon").allowedOrigins("http://localhost:3000");
-				registry.addMapping("/pokemon/{id}").allowedOrigins("http://localhost:3000");
-				registry.addMapping("/pokemon/image/{id}").allowedOrigins("http://localhost:3000");
-				registry.addMapping("/type").allowedOrigins("http://localhost:3000");
+				registry.addMapping("/pokemon").allowedOrigins(REACT_APP_URL);
+				registry.addMapping("/pokemon/{id}").allowedOrigins(REACT_APP_URL);
+				registry.addMapping("/pokemon/image/{id}").allowedOrigins(REACT_APP_URL);
+				registry.addMapping("/type").allowedOrigins(REACT_APP_URL);
 			}
 		};
 	}
