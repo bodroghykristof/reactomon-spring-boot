@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @SpringBootApplication
 public class ReactomonSpringBootApplication {
 
-	private static final String REACT_APP_URL = "https://happy-brown-6dec35.netlify.app";
+	private static final String REACT_APP_URL = "https://reactomon-spring-backend.netlify.app";
 
 	public static void main(String[] args) {
 		SpringApplication.run(ReactomonSpringBootApplication.class, args);
