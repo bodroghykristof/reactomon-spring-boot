@@ -58,7 +58,7 @@ public class PokemonController {
 	}
 
 	@GetMapping("/pokemon/image/{id}")
-	public String fetchImageForPokemon(@PathVariable int id, HttpServletResponse response) {
+	public String fetchImageForPokemon(@PathVariable int id) {
 		JSONObject imageData = new JSONObject();
 		imageData.put("image", POKEMON_IMAGE_ROOT + id + ".png");
 		return imageData.toString();
