@@ -20,7 +20,6 @@ public class PokemonController {
 	}
 
 	@GetMapping("/pokemon")
-	@CrossOrigin
 	public String fetchPokemons(@RequestParam(defaultValue = "0") int offset,
 								@RequestParam(defaultValue = DEFAULT_NUMBER_OF_ITEMS_PER_PAGE) int limit,
 								HttpServletResponse response) {
