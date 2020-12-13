@@ -20,6 +20,7 @@ public class PokemonController {
 	}
 
 	@GetMapping("/pokemon")
+	@CrossOrigin
 	public String fetchPokemons(@RequestParam(defaultValue = "0") int offset,
 								@RequestParam(defaultValue = DEFAULT_NUMBER_OF_ITEMS_PER_PAGE) int limit,
 								HttpServletResponse response) {
@@ -33,6 +34,7 @@ public class PokemonController {
 	}
 
 	@GetMapping("/pokemon/{id}")
+	@CrossOrigin
 	public String fetchPokemonById(@PathVariable int id, HttpServletResponse response) {
 		try {
 			String pokemonBaseData = urlReader.readFromUrl(POKEMON_API_ROOT + "pokemon/" + id);
@@ -48,6 +50,7 @@ public class PokemonController {
 	}
 
 	@GetMapping("/type")
+	@CrossOrigin
 	public String fetchTypes(HttpServletResponse response) {
 		try {
 			return urlReader.readFromUrl(POKEMON_API_ROOT + "type");
@@ -58,6 +61,7 @@ public class PokemonController {
 	}
 
 	@GetMapping("/pokemon/image/{id}")
+	@CrossOrigin
 	public String fetchImageForPokemon(@PathVariable int id) {
 		JSONObject imageData = new JSONObject();
 		imageData.put("image", POKEMON_IMAGE_ROOT + id + ".png");

@@ -20,10 +20,10 @@ public class ReactomonSpringBootApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/pokemon").allowedOrigins("*");
-				registry.addMapping("/pokemon/{id}").allowedOrigins("*");
-				registry.addMapping("/pokemon/image/{id}").allowedOrigins("*");
-				registry.addMapping("/type").allowedOrigins("*");
+				registry.addMapping("/pokemon").allowedOrigins(REACT_APP_URL);
+				registry.addMapping("/pokemon/{id}").allowedOrigins(REACT_APP_URL);
+				registry.addMapping("/pokemon/image/{id}").allowedOrigins(REACT_APP_URL);
+				registry.addMapping("/type").allowedOrigins(REACT_APP_URL);
 			}
 		};
 	}
