@@ -59,14 +59,9 @@ public class PokemonController {
 
 	@GetMapping("/pokemon/image/{id}")
 	public String fetchImageForPokemon(@PathVariable int id, HttpServletResponse response) {
-		try {
-			String res = urlReader.readFromUrl(POKEMON_IMAGE_ROOT + id + ".png");
-			System.out.println(res);
-			return res;
-		} catch (IOException e) {
-			response.setStatus(404);
-			return "Could not fetch data";
-		}
+		JSONObject imageData = new JSONObject();
+		imageData.put("image", POKEMON_IMAGE_ROOT + id + ".png");
+		return imageData.toString();
 	}
 
 }
